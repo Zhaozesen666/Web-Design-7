@@ -1,0 +1,75 @@
+:root{
+  --bg:#f1f4f9;--surface:#fff;--text:#16213a;--muted:#5a6580;--accent:#2f5bea;--accent-text:#fff;--line:#d5dbe8;
+  --r:14px;--gap:1rem;
+}
+:root[data-theme="dark"]{
+  --bg:#000;--surface:#0e0e0e;--text:#f2f2f2;--muted:#a3a3a3;--accent:#7b9bff;--accent-text:#000;--line:#2b2b2b;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth;scroll-padding-top:4.5rem}
+body{font:400 1rem/1.65 "Manrope",system-ui,sans-serif;background:var(--bg);color:var(--text);transition:background .25s,color .25s}
+h1,h2,h3{font-family:"Unbounded","Manrope",sans-serif;line-height:1.2}
+a{color:var(--accent)}
+:focus-visible{outline:3px solid var(--accent);outline-offset:3px}
+
+/* Mobile first: базовые стили для телефона */
+.header{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:.5rem;padding:.6rem 1rem;background:var(--bg);border-bottom:1px solid var(--line)}
+.logo{font:700 1rem "Unbounded",sans-serif;color:var(--text);text-decoration:none}
+.nav{display:flex;gap:.9rem;overflow-x:auto;scrollbar-width:none;font-size:.85rem;flex:1;justify-content:flex-end}
+.nav a{color:var(--muted);text-decoration:none;white-space:nowrap;padding:.3rem 0;border-bottom:2px solid transparent}
+.nav a.is-active{color:var(--text);border-color:var(--accent)}
+.theme-btn{border:1px solid var(--line);background:var(--surface);color:var(--text);width:2.4rem;height:2.4rem;border-radius:50%;font-size:1.1rem;cursor:pointer}
+
+main{max-width:960px;margin:0 auto;padding:0 1rem}
+.hero{padding:3.5rem 0 3rem}
+.hero__role{color:var(--accent);font-weight:700;margin-bottom:.5rem}
+h1{font-size:clamp(2.4rem,11vw,5rem);font-weight:700;margin-bottom:1rem}
+.hero__lead{max-width:34rem;color:var(--muted);font-size:1.1rem;margin-bottom:1.5rem}
+.btn{display:inline-block;border:0;border-radius:999px;background:var(--accent);color:var(--accent-text);font:700 1rem "Manrope",sans-serif;padding:.8rem 1.5rem;text-decoration:none;cursor:pointer}
+.btn:hover{opacity:.9}
+
+.section{padding:2.5rem 0;border-top:1px solid var(--line)}
+.section h2{font-size:1.5rem;margin-bottom:1.25rem}
+.section p{max-width:40rem}
+.note{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+
+.timeline{list-style:none;padding:0;display:grid;gap:var(--gap)}
+.timeline li{display:grid;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1rem 1.2rem}
+.timeline__date{color:var(--accent);font-weight:700;font-size:.9rem}
+
+.chips{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:.6rem}
+.chips li{background:var(--surface);border:1px solid var(--line);border-radius:999px;padding:.4rem 1rem;font-weight:500}
+
+.filters{display:flex;gap:.5rem;margin-bottom:1.25rem}
+.filter{border:1px solid var(--line);background:var(--surface);color:var(--text);border-radius:999px;padding:.4rem 1rem;font:500 .9rem "Manrope",sans-serif;cursor:pointer}
+.filter.is-active{background:var(--accent);color:var(--accent-text);border-color:var(--accent)}
+.cards{display:grid;gap:var(--gap);align-items:start}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:1.25rem}
+.card__img{display:block;width:100%;height:auto;border-radius:10px;margin-bottom:1rem;background:var(--line)}
+.card h3{font-size:1.05rem;margin-bottom:.5rem}
+.card p{color:var(--muted);margin-bottom:.75rem}
+.card[hidden]{display:none}
+
+.contact-list{list-style:none;padding:0;margin-bottom:1.5rem}
+.form{display:grid;gap:var(--gap);max-width:34rem}
+.form label{display:grid;gap:.3rem;font-weight:500}
+.form input,.form textarea{font:inherit;color:var(--text);background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:.7rem .9rem}
+.form input.invalid,.form textarea.invalid{border-color:#d64545}
+.error{color:#d64545;min-height:1.1em;font-size:.85rem;font-weight:400}
+.form__ok{color:var(--accent);font-weight:700}
+
+.footer{border-top:1px solid var(--line);padding:1.5rem 1rem;font-size:.85rem;color:var(--muted);display:grid;gap:.5rem;max-width:960px;margin:0 auto}
+
+/* Планшет и выше */
+@media (min-width:640px){
+  .header{padding:.7rem 2rem}.nav{gap:1.5rem;font-size:.95rem}
+  .cards{grid-template-columns:repeat(2,1fr)}
+  .timeline li{grid-template-columns:9rem 1fr;column-gap:1rem}
+  .timeline li span:last-child{grid-column:2}
+}
+@media (min-width:960px){
+  .hero{padding:6rem 0 5rem}
+  .cards{grid-template-columns:repeat(3,1fr)}
+  .section{padding:3.5rem 0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
